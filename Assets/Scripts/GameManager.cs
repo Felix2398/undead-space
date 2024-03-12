@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
 
     private int currentHighScore = 0;
 
+    public int CurrentHighScore
+    {
+        get { return currentHighScore; }
+    }
+
     static GameManager instance;
 
     public static GameManager GetInstance() {

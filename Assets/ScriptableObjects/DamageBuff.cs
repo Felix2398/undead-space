@@ -7,9 +7,10 @@ public class DamageBuff : PowerupEffect
 {
     public float amount;
     public float time;
+    public Sprite image;
     public override void Apply(GameObject target)
     {
-        target.GetComponent<PlayerWeaponController>().ApplyDamageBuff(amount, time);
+        target.GetComponent<PlayerPowerUp>().ApplyDamageBuff(amount, time, image);
         GameManager.GetInstance().IncrementHighscore(100);
     }
 }

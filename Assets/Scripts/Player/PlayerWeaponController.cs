@@ -137,4 +137,8 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
         }
         return false;
     }
+
+    public GameObject getCurrentWeapon() {
+        return currentWeapon;
+    }
 }
