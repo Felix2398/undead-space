@@ -8,6 +8,8 @@ public class WeaponController : MonoBehaviour
     List<WeaponListener> listeners = new List<WeaponListener>();
     
     private Transform firingPoint;
+    [SerializeField] private WeaponType weaponType;
+    [SerializeField] public Sprite weaponSprite;
     [SerializeField] GameObject muzzle;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] private int damagePerShot;
@@ -22,13 +24,13 @@ public class WeaponController : MonoBehaviour
     private bool isWeaponDamageInscreased = false;
 
 
-    [SerializeField] public static float maxAmmoCount;
+    [SerializeField] private int maxAmmoCount;
     [SerializeField] private int startAmmoCount;
     [SerializeField] private int currentAmmoCount;
 
     private void Start() 
     {
-        currentAmmoCount = startAmmoCount;
+        ChangeAmmoCount(startAmmoCount);
     }
 
     private void FixedUpdate() 
@@ -51,7 +53,8 @@ public class WeaponController : MonoBehaviour
             ShootProjectile();
         }
 
-        DecreaseCurrentAmmo();
+        currentAmmoCount--;
+        ChangeAmmoCount(currentAmmoCount);
     }
 
     public void ShootProjectile()
@@ -74,13 +77,15 @@ public class WeaponController : MonoBehaviour
         return direction;
     }
 
-    private void DecreaseCurrentAmmo()
+    private void ChangeAmmoCount(int newAmmoCount)
     {
-        currentAmmoCount--;
+        currentAmmoCount = newAmmoCount;
         if (currentAmmoCount <= 0)
         {
             removeWeapon();
         }
+
+        listeners.ForEach(listener => listener.OnAmmoChange(currentAmmoCount, maxAmmoCount));
     }
 
     private void removeWeapon()
@@ -97,10 +102,22 @@ public class WeaponController : MonoBehaviour
         return currentAmmoCount;
     }
 
+    public int GetMaxAmmo()
+    {
+        return maxAmmoCount;
+    }
+
+    public WeaponType GetWeaponType()
+    {
+        return weaponType;
+    }
+
+
     public void AddListener(WeaponListener weaponListener)
     {
         listeners.Add(weaponListener);
     }
+
     public void IncreaseDamage(float amount, float time) {
 
         if(!isWeaponDamageInscreased) {

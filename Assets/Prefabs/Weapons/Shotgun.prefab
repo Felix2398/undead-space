@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0063baabaecdf47ad49ed6d47736fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSprite: {fileID: 21300000, guid: 7998349fd2e36ae43bba456b26a29963, type: 3}
   muzzle: {fileID: 5783043528643993624}
   projectilePrefab: {fileID: 2946373576388238746, guid: 3b39072482659c640a354f651b70d28a, type: 3}
   damagePerShot: 12
@@ -109,6 +110,7 @@ MonoBehaviour:
   horizontalSpread: 15
   verticalSpread: 15
   shootingCooldown: 0.5
+  maxAmmoCount: 30
   startAmmoCount: 20
   currentAmmoCount: 0
 --- !u!1 &5783043528643993624

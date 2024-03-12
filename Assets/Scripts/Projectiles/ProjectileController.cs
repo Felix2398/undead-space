@@ -45,18 +45,15 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log("Hit something: " + other.gameObject.layer);
         ContactPoint contact = other.contacts[0];
         Vector3 collisionPoint = contact.point;
 
         if (other.gameObject.layer.Equals(9))
         {
-            Debug.Log("hit wall");
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Enemy Hurtbox"))
         {
-            Debug.Log("Hit enemy");
             other.gameObject.GetComponent<EnemyHurtBox>().DealDamage(damage);
             Destroy(gameObject);
         }

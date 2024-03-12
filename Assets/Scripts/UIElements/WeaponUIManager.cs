@@ -5,50 +5,41 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class WeaponUIManager : MonoBehaviour
+public class WeaponUIManager : MonoBehaviour, PlayerWeaponListener
 {
-    public GameObject panelPrefab;
-    public Transform container; 
-    private Dictionary<WeaponType, GameObject> instantiatedPanels = new Dictionary<WeaponType, GameObject>();
+    [SerializeField] private PlayerWeaponController playerWeaponController;
+    [SerializeField] private GameObject panelPrefab;
+    private Dictionary<GameObject, GameObject> instantiatedPanels = new Dictionary<GameObject, GameObject>();
 
-    public void initializePanels(List<WeaponItem> list) {
-        
-        foreach (WeaponItem weapon in list)
-        {
-            CreatePanel(weapon);
-        }
-    }
-
-    public void CreatePanel(WeaponItem item)
+    private void Awake() 
     {
-        GameObject panelInstance = Instantiate(panelPrefab);
-        instantiatedPanels.Add(item.type, panelInstance);
-
-        panelInstance.transform.SetParent(container.transform, false);
-
-
-        Sprite banana = Resources.Load<Sprite>(item.weaponImage);
-        Image childImageComponent = panelInstance.transform.Find("Weapon").GetComponent<Image>();
-        childImageComponent.sprite = banana;
+        playerWeaponController.AddListener(this);
     }
 
-    public void ApplyWeaponInUse(WeaponType itemName) {
-
+    public void OnEquippedWeaponChange(GameObject currentWeapon)
+    {
         foreach (GameObject value in instantiatedPanels.Values)
         {
-            value.GetComponent<Outline>().enabled = false;
+            value.GetComponent<WeaponPanel>().SetActive(false);
         }
 
-        instantiatedPanels[itemName].GetComponent<Outline>().enabled = true;
+        instantiatedPanels[currentWeapon].GetComponent<WeaponPanel>().SetActive(true);
     }
 
-    public void ApplyWeaponOwned(WeaponType itemName)
+    public void OnNewWeaponAdded(GameObject newWeapon)
     {
-        GameObject panel;
+        GameObject panelInstance = Instantiate(panelPrefab);
+        instantiatedPanels.Add(newWeapon, panelInstance);
 
-        if (instantiatedPanels.TryGetValue(itemName, out panel))
-        {
-            panel.transform.Find("Weapon").GetComponent<Image>().color = Color.white;
-        }
+        panelInstance.transform.SetParent(gameObject.transform, false);
+        panelInstance.GetComponent<WeaponPanel>().SetWeapon(newWeapon);
+        panelInstance.GetComponent<WeaponPanel>().SetActive(false);
+    }
+
+    public void OnWeaponRemoved(GameObject removedWeapon)
+    {
+        GameObject panel = instantiatedPanels[removedWeapon];
+        Destroy(panel);
+        instantiatedPanels.Remove(removedWeapon);
     }
 }

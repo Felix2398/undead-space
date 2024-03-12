@@ -4,5 +4,13 @@ using UnityEngine;
 
 public interface WeaponListener
 {
-    public void OnWeaponDeletion(GameObject weapon);
+    public void OnWeaponDeletion(GameObject weapon)
+    {
+        return;
+    }
+
+    public void OnAmmoChange(int currentAmmoCount, int maxAmmoCount)
+    {
+        return;
+    }
 }
