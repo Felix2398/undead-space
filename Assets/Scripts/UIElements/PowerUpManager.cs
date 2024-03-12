@@ -6,22 +6,16 @@ using UnityEngine.UI;
 public class PowerUpManager : MonoBehaviour
 {
     
-    public GameObject panel; // Referenz zum Container-Panel
+    public GameObject powerUpPanelPrefab; // Referenz zum Power-Up-Panel-Prefab
 
-    public void CreateTimedImage(Sprite imageSprite, float time)
+    // Methode zum Hinzufügen eines Power-Up-Panels zum Container
+    public void AddPowerUpPanel(Sprite img, float time)
     {
-        // Erstelle ein neues GameObject für das Bild
-        GameObject imageObject = new GameObject("TimedImage");
-        imageObject.transform.SetParent(panel.transform, false); // Füge es als Kind des Panels hinzu
-
-        // Füge eine Image-Komponente hinzu und weise das Sprite zu
-        Image imageComponent = imageObject.AddComponent<Image>();
-        imageComponent.sprite = imageSprite;
-
-        RectTransform rectTransform = imageObject.GetComponent<RectTransform>();
-        rectTransform.sizeDelta = new Vector2(150, 300);
-
-        TimeDisappear timedDisappear = imageObject.AddComponent<TimeDisappear>();
-        timedDisappear.lifetime = time; // Setze die Lebenszeit basierend auf dem übergebenen Parameter
+        GameObject panelInstance = Instantiate(powerUpPanelPrefab);
+        panelInstance.transform.SetParent(gameObject.transform, false);
+        panelInstance.GetComponent<PowerUpPanel>().SetPanelImage(img);
+        panelInstance.GetComponent<PowerUpPanel>().lifetime = time;
+        panelInstance.GetComponent<PowerUpPanel>().SetActive(true);
+        // Optional: Konfiguriere das Panel hier (z.B. setze spezifische Daten)
     }
 }

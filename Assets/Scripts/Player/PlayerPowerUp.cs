@@ -27,7 +27,7 @@ public class PlayerPowerUp : MonoBehaviour
     {
         if (!isSpeedBuffActive)
         {
-            powerupUIManager.GetComponent<PowerUpManager>().CreateTimedImage(img, time);
+            powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
             isSpeedBuffActive = true;
             speedBuffCoroutine = StartCoroutine(SpeedBuffCoroutine(amount, time));
         }
@@ -66,7 +66,7 @@ public class PlayerPowerUp : MonoBehaviour
         // }
         GameObject currentWeapon = gameObject.GetComponent<PlayerWeaponController>().getCurrentWeapon();
         WeaponController wc = currentWeapon.GetComponent<WeaponController>();
-        if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().CreateTimedImage(img, time);
+        if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
         wc.IncreaseDamage(amount, time);        
     }
 }
