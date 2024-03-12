@@ -23,6 +23,11 @@ public class WeaponController : MonoBehaviour
     private float shootingTimer; // Timer, der verfolgt, wann zuletzt geschossen wurde
     private bool isWeaponDamageInscreased = false;
 
+    public bool IsWeaponDamageInscreased
+    {
+        get { return isWeaponDamageInscreased; }
+    }
+
 
     [SerializeField] private int maxAmmoCount;
     [SerializeField] private int startAmmoCount;

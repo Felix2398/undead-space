@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 1
   time: 10
+  image: {fileID: 21300000, guid: 2ea5dd9550249fd4289608d97ae26e91, type: 3}

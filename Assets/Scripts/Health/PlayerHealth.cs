@@ -24,6 +24,7 @@ public class PlayerHealth : Health {
             // Time.timeScale = 0f;
             GameIsPaused = true;
 			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameOver.GetInstance().setHighScore(GameManager.GetInstance().CurrentHighScore.ToString());
         }
     }
 

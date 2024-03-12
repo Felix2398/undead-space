@@ -959,20 +959,6 @@ MonoBehaviour:
   - {fileID: 8493187584408110205, guid: a4b389962ffc9d84f9cd75055ff1c2d7, type: 3}
   - {fileID: 5242797513369043602, guid: dbe51eb84f1a1234fb13a92cb47182ff, type: 3}
   - {fileID: 4583469296828575349, guid: 6fdfc1ff916c18f4ab56b9281c8409b0, type: 3}
-  weaponsCollection:
-  - type: 0
-    weaponImage: blasterC
-    weaponKey: 0
-    isOwned: 1
-    isUsed: 1
-    weaponPrefab: {fileID: 8493187584408110205, guid: a4b389962ffc9d84f9cd75055ff1c2d7, type: 3}
-  - type: 2
-    weaponImage: blasterF
-    weaponKey: 0
-    isOwned: 0
-    isUsed: 0
-    weaponPrefab: {fileID: 5242797513369043602, guid: dbe51eb84f1a1234fb13a92cb47182ff, type: 3}
-  weaponUIManager: {fileID: 0}
 --- !u!114 &3301148751163943394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f06c0d369273a44b8d3d3c22d350ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupUIManager: {fileID: 2532703064759127473, guid: 74b8e76dde5b91b40b096f864716f283, type: 3}
 --- !u!1 &2401255021638917483
 GameObject:
   m_ObjectHideFlags: 0
