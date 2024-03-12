@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
+    [SerializeField] ParticleSystem hitEffect;
     EnemyController enemyController;
 
     private void Start() 
@@ -16,7 +17,7 @@ public class EnemyHealth : Health
         if (enemyController.IsDead()) return;
 
         SubtractLife(damage);
-
+        hitEffect.Play();
 
         if (health <= 0)
         {

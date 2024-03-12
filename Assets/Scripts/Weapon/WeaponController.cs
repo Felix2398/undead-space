@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
     private Transform firingPoint;
     [SerializeField] private WeaponType weaponType;
     [SerializeField] public Sprite weaponSprite;
-    [SerializeField] GameObject muzzle;
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] private int damagePerShot;
     [SerializeField] private int projectilesPerShot;
@@ -48,10 +48,13 @@ public class WeaponController : MonoBehaviour
         if (shootingTimer < shootingCooldown) return;
         shootingTimer = 0f;
 
+        muzzleFlash.Play();
+
         for (int i = 0; i < projectilesPerShot; i++)
         {
             ShootProjectile();
         }
+
 
         currentAmmoCount--;
         ChangeAmmoCount(currentAmmoCount);
