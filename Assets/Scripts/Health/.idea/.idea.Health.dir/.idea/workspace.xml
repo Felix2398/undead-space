@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a1b835f-69df-4f60-b92f-d99b6a40ccdf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TextureModels2/UI Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_red.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../TextureModels2/UI Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_red.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TextureModels2/UI Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_yellow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../TextureModels2/UI Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_yellow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +18,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../UndeadSpeaceDien/UndeadSpace/Assets/Scripts/Health/PlayerHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlayerHealth.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../PauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PauseMenu.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -58,6 +61,7 @@
       <workItem from="1710096803793" duration="35000" />
       <workItem from="1710097027378" duration="136000" />
       <workItem from="1710097336827" duration="44000" />
+      <workItem from="1710280155466" duration="47000" />
     </task>
     <servers />
   </component>

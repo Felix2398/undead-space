@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AnimationTest.unity
     guid: d4b3219e38baba64a9da8c26aa57e441
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main-Menu.unity
     guid: 2ff4590709e74d9408c6a297ea962bb2
+  - enabled: 1
+    path: Assets/Scenes/Main-Menu.unity
+    guid: f16f95271e593df419978d3fdf6e0c01
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: f1d980ad1071b8d4c9b9d988eef5cb43
