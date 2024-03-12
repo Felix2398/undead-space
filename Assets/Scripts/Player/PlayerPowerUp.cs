@@ -8,6 +8,7 @@ public class PlayerPowerUp : MonoBehaviour
 
     private PlayerMovementController playerMovementController;
     private PlayerStateController playerStateController;
+    public GameObject powerupUIManager;
 
     void Start() 
     {
@@ -22,10 +23,11 @@ public class PlayerPowerUp : MonoBehaviour
 
     private Coroutine speedBuffCoroutine;
 
-    public void ApplySpeedBuff(float amount, float time)
+    public void ApplySpeedBuff(float amount, float time, Sprite img)
     {
         if (!isSpeedBuffActive)
         {
+            powerupUIManager.GetComponent<PowerUpManager>().CreateTimedImage(img, time);
             isSpeedBuffActive = true;
             speedBuffCoroutine = StartCoroutine(SpeedBuffCoroutine(amount, time));
         }
@@ -54,5 +56,17 @@ public class PlayerPowerUp : MonoBehaviour
             PlayerState.IS_SPRINTING => sprintSpeed,
             _ => 0
         };
+    }
+
+    public void ApplyDamageBuff(float amount, float time, Sprite img) {
+
+        // foreach (var weapon in startWeaponPrefabs)
+        // {
+        //     weapon.GetComponent<WeaponController>().IncreaseDamage(amount, time);
+        // }
+        GameObject currentWeapon = gameObject.GetComponent<PlayerWeaponController>().getCurrentWeapon();
+        WeaponController wc = currentWeapon.GetComponent<WeaponController>();
+        if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().CreateTimedImage(img, time);
+        wc.IncreaseDamage(amount, time);        
     }
 }
