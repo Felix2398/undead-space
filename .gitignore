@@ -75,3 +75,7 @@ crashlytics-build.properties
 
 *.vscode 
 *.vsconfig
+
+# Folder with Thirdparty Assets
+/[Aa]ssets/Thirdparty
+/[Aa]ssets/Thirdparty.meta
