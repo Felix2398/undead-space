@@ -25,13 +25,12 @@ public class PowerUp : MonoBehaviour
 
         if(collider.gameObject.tag == "Player") {
             
-            // gameObject.GetComponent<MeshRenderer>().enabled = false;
-            // gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
 
             powerupEffect.Apply(collider.gameObject);
-            // audioSource.Play();
-            // StartCoroutine(DestroyAfterSound());
-            Destroy(gameObject);
+            audioSource.Play();
+            StartCoroutine(DestroyAfterSound());
         }
     }
 
