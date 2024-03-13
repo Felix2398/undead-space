@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
     public float health = 100f;
-    protected float maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
     public GameObject healthbar;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     // Update is called once per frame

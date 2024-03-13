@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         if (isDead) return;
-        UpdateTargetPosition();
+        targetPosition = player.transform.position;
 
         bool canAttack = calcDistanceToPlayer() <= attackRadius;
         if (currentState == EnemyState.CHASING && canAttack)

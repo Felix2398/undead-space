@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.7969193, y: 3.906358, z: 1.750408}
+  m_Center: {x: 0.011770702, y: 0.5892292, z: 0.37520257}
 --- !u!114 &6080558104308724843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 2975277572596604268}
   - component: {fileID: 4396638046503038196}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,12 +513,12 @@ MonoBehaviour:
   hitBox: {fileID: 6080558104308724843}
   hurtBox: {fileID: 5363144789779277480}
   ui: {fileID: 5330966249976006363}
-  damage: 5
-  speed: 2
-  attackRadius: 0.3
+  damage: 30
+  speed: 0.5
+  attackRadius: 0.6
   currentState: 0
-  runAnimationSpeed: 1
-  attackAnimationSpeed: 1
+  runAnimationSpeed: 0.5
+  attackAnimationSpeed: 0.5
 --- !u!114 &2975277572596604268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,8 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db33ff9d86a5c6419beb202a101f8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 700
+  maxHealth: 700
   healthbar: {fileID: 3551053710292057495}
   hitEffect: {fileID: 4582121392477005661}
 --- !u!195 &4396638046503038196
@@ -649,7 +649,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1360852868843845397}
@@ -1094,7 +1094,7 @@ Transform:
   m_GameObject: {fileID: 3765784552700936201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1119,8 +1119,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.13
-  m_Height: 4.13
+  m_Radius: 1.64
+  m_Height: 7.39
   m_Direction: 1
   m_Center: {x: 0, y: 1.91, z: 0}
 --- !u!114 &5363144789779277480
@@ -1431,7 +1431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 8.27}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7326231563402940154
