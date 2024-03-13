@@ -4954,7 +4954,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2946373576388238746, guid: 17c7f8031d3e78a41aa003e375bf0e74, type: 3}
   damagePerShot: 50
   enemyPenetrationCount: 9999
-  projectilesPerShot: 1000
+  projectilesPerShot: 100
   shotSpeed: 2
   range: 10
   horizontalSpread: 100

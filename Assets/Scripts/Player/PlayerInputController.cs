@@ -47,13 +47,14 @@ public class PlayerInputController : MonoBehaviour
 
     private void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            playerWeaponController.EquipNextWeapon();
-        } 
-        else if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.E))
         {
             playerWeaponController.EquipPreviousWeapon();
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.Q))
+        {
+            playerWeaponController.EquipNextWeapon();
         }
     }
 }
