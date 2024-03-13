@@ -10,13 +10,37 @@ public class PowerUp : MonoBehaviour
 
     public MeshRenderer meshRenderer;
 
-    public float lifetime = 15f; // Lebensdauer des Power-Ups in Sekunden
+    public float blinkStart = 3f;
 
-    GameObject player;
+    public float lifetime = 15f;
 
     void Start()
     {
         Destroy(gameObject, lifetime);
+        
+        StartCoroutine(LifetimeCountdown());
+    }
+
+    IEnumerator LifetimeCountdown()
+    {
+        yield return new WaitForSeconds(lifetime - blinkStart);
+        StartCoroutine(Blink());
+    }
+
+    IEnumerator Blink()
+    {
+        float endTime = Time.time + blinkStart;
+        while (Time.time < endTime)
+        {
+            // Toggle die Sichtbarkeit des MeshRenderers
+            meshRenderer.enabled = !meshRenderer.enabled;
+
+            // Warte einen kurzen Moment vor dem nächsten Blinken
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // Stelle sicher, dass das Power-Up am Ende sichtbar ist
+        meshRenderer.enabled = true;
     }
 
     void OnDestroy() {

@@ -67,7 +67,7 @@ public class PlayerPowerUp : MonoBehaviour
             isDamageIncreased = true;
             powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
             float defaultDamageMultiplier = weaponController.damageMultiplier;
-            weaponController.damageMultiplier = amount;
+            weaponController.damageMultiplier = weaponController.damageMultiplier * amount;
             StartCoroutine(ResetDamageAfterTime(defaultDamageMultiplier, time, weaponController));
         }
     }
