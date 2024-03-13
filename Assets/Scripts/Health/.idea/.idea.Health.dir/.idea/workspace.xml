@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a1b835f-69df-4f60-b92f-d99b6a40ccdf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/Main-Menu.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.Scripts.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Health.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Health.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../PauseMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UIElements/GameOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../UIElements/GameOver.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,7 @@
     <setting file="file://$PROJECT_DIR$/PlayerHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PauseMenu.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -41,9 +43,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Mert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Mert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Mert\\AppData\\Local\\Symbols\\src&quot;
+      &quot;/Users/osmanyozgat/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/osmanyozgat/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/osmanyozgat/.local/share/Symbols/src&quot;
     ]
   }
 }</component>
@@ -62,12 +64,16 @@
       <workItem from="1710097027378" duration="136000" />
       <workItem from="1710097336827" duration="44000" />
       <workItem from="1710280155466" duration="47000" />
+      <workItem from="1710332830342" duration="13000" />
+      <workItem from="1710332852843" duration="11000" />
+      <workItem from="1710332913728" duration="7000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
