@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a82ad9df8504846b32aad0d8383d4e, type: 3}
   m_Name: SmgBuff
   m_EditorClassIdentifier: 
-  weapon: {fileID: 5242797513369043602, guid: dbe51eb84f1a1234fb13a92cb47182ff, type: 3}
+  weapon: {fileID: 4512455757757638442, guid: c0f23a9b0018f484fb25c6ae2c57ddb3, type: 3}
