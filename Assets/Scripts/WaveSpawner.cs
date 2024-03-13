@@ -172,7 +172,7 @@ public class WaveSpawner : MonoBehaviour
     if (powerUpPrefabs.Length == 0) return;
         int randomIndex = Random.Range(0, powerUpPrefabs.Length);
         GameObject powerUpPrefab = powerUpPrefabs[randomIndex];
-                spawnPosition.y = 0.042f;
+                spawnPosition.y = 0.2f;
         Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity);
         powerUpsSpawned++;
     }
