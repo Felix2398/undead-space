@@ -22,6 +22,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] public float shootingCooldown = 0.5f; // Cooldown-Zeit in Sekunden zwischen den Schüssen
     private float shootingTimer; // Timer, der verfolgt, wann zuletzt geschossen wurde
     private bool isWeaponDamageInscreased = false;
+    public bool hasInfiniteAmmo = false;
 
     public bool IsWeaponDamageInscreased
     {
@@ -32,11 +33,6 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private int maxAmmoCount;
     [SerializeField] private int startAmmoCount;
     [SerializeField] private int currentAmmoCount;
-
-    private void Start() 
-    {
-        ChangeAmmoCount(startAmmoCount);
-    }
 
     private void FixedUpdate() 
     {
@@ -60,9 +56,11 @@ public class WeaponController : MonoBehaviour
             ShootProjectile();
         }
 
-
-        currentAmmoCount--;
-        ChangeAmmoCount(currentAmmoCount);
+        if (!hasInfiniteAmmo)
+        {
+            currentAmmoCount--;
+            ChangeAmmoCount(currentAmmoCount);
+        }
     }
 
     public void ShootProjectile()
@@ -87,7 +85,7 @@ public class WeaponController : MonoBehaviour
 
     private void ChangeAmmoCount(int newAmmoCount)
     {
-        currentAmmoCount = newAmmoCount;
+        currentAmmoCount = Mathf.Min(newAmmoCount, maxAmmoCount);
         if (currentAmmoCount <= 0)
         {
             removeWeapon();
@@ -146,5 +144,15 @@ public class WeaponController : MonoBehaviour
 
         damagePerShot = (int)initialDamagePerShot;
         isWeaponDamageInscreased = false;
+    }
+
+    public void SetCurrentAmmoToMaxAmmo()
+    {
+        ChangeAmmoCount(maxAmmoCount);
+    }
+
+    public void SetCurrentAmmoToStartAmmo()
+    {
+        ChangeAmmoCount(startAmmoCount);
     }
 }

@@ -25,13 +25,20 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
 
     void Start()
     {
-        InstantiateWeapon(startWeaponPrefab);
+        CreateStartWeaopn();
         startWeaponPrefabs.ForEach(w => InstantiateWeapon(w));
+    }
 
+    private void CreateStartWeaopn()
+    {
+        InstantiateWeapon(startWeaponPrefab);
         weaponIndex = 0;
         currentWeapon = currentWeapons[weaponIndex];
-        EquipWeapon();
         currentWeapon.SetActive(true);
+        EquipWeapon();
+
+        currentWeapon.GetComponent<WeaponController>().hasInfiniteAmmo = true;
+        currentWeapon.GetComponent<WeaponController>().SetCurrentAmmoToMaxAmmo();
     }
 
     private void InstantiateWeapon(GameObject weaponPrefab)
@@ -43,6 +50,7 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
         WeaponController weaponController = weapon.GetComponent<WeaponController>();
         weaponController.SetFiringPoint(firingPoint);
         weaponController.AddListener(this);
+        weaponController.SetCurrentAmmoToStartAmmo();
         
         listeners.ForEach(listeners => listeners.OnNewWeaponAdded(weapon));
     }
