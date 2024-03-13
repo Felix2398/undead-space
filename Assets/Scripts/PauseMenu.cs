@@ -7,8 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
 	public static bool GameIsPaused = false;
 	public GameObject pauseMenuUI;
-    // Start is called before the first frame update
-    
+	public GameObject player;    
 
     // Update is called once per frame
     void Update()
@@ -16,28 +15,34 @@ public class PauseMenu : MonoBehaviour
 	    if (!GameOver.GetInstance().IsPlayerDead)
 	    {
 			if(Input.GetKeyDown(KeyCode.Escape)){
+				
 				if(GameIsPaused){
 					Resume();   
 				}
 				else {
-				 Pause();
-		 			 }
-				}
-				
+				 	Pause();
+
+					player.GetComponent<PlayerMovementController>().LookAtMouse = false;
+		 		}
+			}	
 	    }
     }
 	
 
-	public void Resume(){
-	pauseMenuUI.SetActive(false);
-	Time.timeScale = 1f;
-	GameIsPaused = false;
+	public void Resume()
+	{
+		pauseMenuUI.SetActive(false);
+		Time.timeScale = 1f;
+		GameIsPaused = false;
+		player.GetComponent<PlayerMovementController>().LookAtMouse = true;
 	}
 
-	void Pause(){
-	pauseMenuUI.SetActive(true);
-	Time.timeScale = 0f;
-	GameIsPaused = true;
+	void Pause() 
+	{
+		player.GetComponent<PlayerMovementController>().LookAtMouse = false;
+		pauseMenuUI.SetActive(true);
+		Time.timeScale = 0f;
+		GameIsPaused = true;
 	}
 	
 	public void QuitGame()
