@@ -10,9 +10,9 @@ public class PowerUp : MonoBehaviour
 
     public MeshRenderer meshRenderer;
 
-    public float blinkStart = 3f;
+    private float blinkStart = 3f;
 
-    public float lifetime = 15f;
+    private float lifetime = 15f;
 
     void Start()
     {

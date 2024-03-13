@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPowerUp : MonoBehaviour
 {
@@ -11,10 +13,16 @@ public class PlayerPowerUp : MonoBehaviour
     private PlayerStateController playerStateController;
     public GameObject powerupUIManager;
 
+    public TextMeshProUGUI levelLabel;
+    public Image levelUpBackground;
+
+    private int playerLevel = 1;
+
     void Start() 
     {
         playerMovementController = gameObject.GetComponent<PlayerMovementController>(); 
         playerStateController = gameObject.GetComponent<PlayerStateController>(); 
+        levelLabel.text = playerLevel.ToString();
     }
 
     public void ApplyHealthBuff(float amount)
@@ -81,5 +89,14 @@ public class PlayerPowerUp : MonoBehaviour
 
     public void ApplyNewWeapon(GameObject weapon) {
         gameObject.GetComponent<PlayerWeaponController>().AddNewWeapon(weapon);
+    }
+
+    public void ApplyLevelUpBuff(float amount) {
+
+        PlayerWeaponController weaponController = gameObject.GetComponent<PlayerWeaponController>();
+        weaponController.damageMultiplier += amount;
+        playerLevel++;
+        levelLabel.text = playerLevel.ToString();
+        levelUpBackground.GetComponent<LevelUpAnimator>().StartLevelUpAnimation();
     }
 }
