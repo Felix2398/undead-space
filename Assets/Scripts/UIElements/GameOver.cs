@@ -52,6 +52,6 @@ public class GameOver : MonoBehaviour
         GameManager.GetInstance().TimeLabel.GetComponent<TimeCalculator>().StopTime();
         SetTime(GameManager.GetInstance().TimeLabel.text.ToString());
 		IsPlayerDead = true;
-        MusicShuffler.GetInstance().PauseAudioSource();
+        MusicShuffler.GetInstance().PauseMusic();
     }
 }

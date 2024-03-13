@@ -8,21 +8,23 @@ public class MusicShuffler : MonoBehaviour
     public List<AudioClip> playlist = new List<AudioClip>();
     private List<AudioClip> playHistory = new List<AudioClip>();
     private int historyLimit = 2; // Anpassen, um mehr oder weniger der letzten Lieder zu berücksichtigen
+    private bool stopCoroutine = false;
     static MusicShuffler instance;
-
 
     void Start()
     {
         StartCoroutine(PlayShuffledMusic());
     }
 
+
     public static MusicShuffler GetInstance() {
         return instance;
     }
-    
-    void Awake() {
-        
-        if(instance != null) {
+
+    void Awake()
+    {
+        if (instance != null)
+        {
             Destroy(gameObject);
             return;
         }
@@ -33,22 +35,29 @@ public class MusicShuffler : MonoBehaviour
     {
         while (true)
         {
-            var playlistToShuffle = new List<AudioClip>(playlist);
+            if (stopCoroutine)
+            {
+                yield break; // Beendet die Coroutine, wenn stopCoroutine true ist
+            }
 
-            // Entferne die Historie, um direkte Wiederholungen zu vermeiden
+            var playlistToShuffle = new List<AudioClip>(playlist);
             foreach (var track in playHistory)
             {
                 playlistToShuffle.Remove(track);
             }
 
-            // Mische die verbleibende Playlist
             var shuffledPlaylist = ShuffleList(playlistToShuffle);
 
             foreach (var track in shuffledPlaylist)
             {
                 audioSource.clip = track;
-                PlayAudioSource();
+                audioSource.Play();
                 yield return new WaitForSeconds(track.length);
+
+                if (stopCoroutine)
+                {
+                    yield break; // Beendet die Coroutine, wenn stopCoroutine true ist
+                }
 
                 UpdatePlayHistory(track);
             }
@@ -72,15 +81,22 @@ public class MusicShuffler : MonoBehaviour
         playHistory.Add(track);
         if (playHistory.Count > historyLimit)
         {
-            playHistory.RemoveAt(0); // Entferne das älteste Lied, um die Historie auf eine feste Größe zu beschränken
+            playHistory.RemoveAt(0);
         }
     }
 
-    public void PauseAudioSource() {
+    public void PauseMusic()
+    {
         audioSource.Pause();
+        stopCoroutine = true;
     }
 
-    public void PlayAudioSource() {
-        audioSource.Play();
+    public void ResumeMusic()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        stopCoroutine = false;
     }
 }

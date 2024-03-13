@@ -35,13 +35,13 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 		player.GetComponent<PlayerMovementController>().LookAtMouse = true;
-		MusicShuffler.GetInstance().PlayAudioSource();
+		MusicShuffler.GetInstance().ResumeMusic();
 	}
 
 	void Pause() 
 	{
 		player.GetComponent<PlayerMovementController>().LookAtMouse = false;
-		MusicShuffler.GetInstance().PauseAudioSource();
+		MusicShuffler.GetInstance().PauseMusic();
 		pauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
 		GameIsPaused = true;
