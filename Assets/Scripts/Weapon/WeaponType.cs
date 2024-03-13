@@ -6,5 +6,8 @@ public enum WeaponType
 {
     PISTOL,
     SHOTGUN,
-    SMG
+    SMG,
+    SNIPER,
+    AR,
+    WAVE_GUN
 }
