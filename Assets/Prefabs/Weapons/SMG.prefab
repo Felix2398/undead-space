@@ -9902,17 +9902,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0063baabaecdf47ad49ed6d47736fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 2
   weaponSprite: {fileID: 21300000, guid: 4f389889ded970c4ba35457e4a43e69e, type: 3}
   muzzleFlash: {fileID: 1779507067096400582}
   projectilePrefab: {fileID: 2946373576388238746, guid: a99310ab0b28dbf498133d68ce02fea8, type: 3}
   damagePerShot: 20
+  enemyPenetrationCount: 1
   projectilesPerShot: 1
   shotSpeed: 10
   range: 1
   horizontalSpread: 5
   verticalSpread: 5
   shootingCooldown: 0.05
+  hasInfiniteAmmo: 0
   maxAmmoCount: 100
   startAmmoCount: 10
   currentAmmoCount: 0

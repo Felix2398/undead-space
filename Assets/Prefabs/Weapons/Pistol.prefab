@@ -9906,12 +9906,14 @@ MonoBehaviour:
   muzzleFlash: {fileID: 121991278520186204}
   projectilePrefab: {fileID: 2946373576388238746, guid: a99310ab0b28dbf498133d68ce02fea8, type: 3}
   damagePerShot: 25
+  enemyPenetrationCount: 1
   projectilesPerShot: 1
   shotSpeed: 20
   range: 1
   horizontalSpread: 2
   verticalSpread: 2
   shootingCooldown: 0.25
+  hasInfiniteAmmo: 0
   maxAmmoCount: 20
   startAmmoCount: 10
   currentAmmoCount: 0
