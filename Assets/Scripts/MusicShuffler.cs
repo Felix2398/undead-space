@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class MusicShuffler : MonoBehaviour
 {
- public AudioSource audioSource;
+    public AudioSource audioSource;
     public List<AudioClip> playlist = new List<AudioClip>();
     private List<AudioClip> playHistory = new List<AudioClip>();
     private int historyLimit = 2; // Anpassen, um mehr oder weniger der letzten Lieder zu berücksichtigen
+    static MusicShuffler instance;
+
 
     void Start()
     {
         StartCoroutine(PlayShuffledMusic());
+    }
+
+    public static MusicShuffler GetInstance() {
+        return instance;
+    }
+    
+    void Awake() {
+        
+        if(instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
     }
 
     IEnumerator PlayShuffledMusic()
@@ -32,7 +47,7 @@ public class MusicShuffler : MonoBehaviour
             foreach (var track in shuffledPlaylist)
             {
                 audioSource.clip = track;
-                audioSource.Play();
+                PlayAudioSource();
                 yield return new WaitForSeconds(track.length);
 
                 UpdatePlayHistory(track);
@@ -59,5 +74,13 @@ public class MusicShuffler : MonoBehaviour
         {
             playHistory.RemoveAt(0); // Entferne das älteste Lied, um die Historie auf eine feste Größe zu beschränken
         }
+    }
+
+    public void PauseAudioSource() {
+        audioSource.Pause();
+    }
+
+    public void PlayAudioSource() {
+        audioSource.Play();
     }
 }

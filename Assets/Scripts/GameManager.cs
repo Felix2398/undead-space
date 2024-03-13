@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void DisplayNextWaveWarning() {
-        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Nächste Welle kommt");
+        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Nächste Welle kommt!");
     }
 
     public void IncrementHighscore(int points) {

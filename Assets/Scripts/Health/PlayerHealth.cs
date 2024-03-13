@@ -27,7 +27,7 @@ public class PlayerHealth : Health {
 			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             GameOver.GetInstance().setHighScore(GameManager.GetInstance().CurrentHighScore.ToString());
 			GameOver.GetInstance().IsPlayerDead = true;
-            
+            MusicShuffler.GetInstance().PauseAudioSource();
         }
     }
 
@@ -56,6 +56,6 @@ public class PlayerHealth : Health {
 	
 	public void RestartGame(){ 
 		Time.timeScale = 1f;
-	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
