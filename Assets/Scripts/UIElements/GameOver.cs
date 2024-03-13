@@ -7,6 +7,14 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI highScoreLabel;
+    private bool isPlayerDead = false;
+	
+	public bool IsPlayerDead
+	{
+		get {	return isPlayerDead;}
+		set {	isPlayerDead = value;}	
+	}
+	
 
     static GameOver instance;
 

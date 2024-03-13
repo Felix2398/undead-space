@@ -8,6 +8,7 @@ public class PlayerHealth : Health {
     public static bool GameIsPaused = false;
     public GameObject GameOverMenuUI;
 
+
     public GameObject GameWaveUI;
     
 
@@ -25,6 +26,8 @@ public class PlayerHealth : Health {
             GameIsPaused = true;
 			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             GameOver.GetInstance().setHighScore(GameManager.GetInstance().CurrentHighScore.ToString());
+			GameOver.GetInstance().IsPlayerDead = true;
+            
         }
     }
 

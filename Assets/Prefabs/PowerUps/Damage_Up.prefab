@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupEffect: {fileID: 11400000, guid: 70065fdf0e73c0a48a764c520cd6bb8e, type: 2}
   audioSource: {fileID: 7274298220753679796}
+  meshRenderer: {fileID: 9017873653857097958}
   lifetime: 15
 --- !u!65 &8819926689597336422
 BoxCollider:
@@ -268,5 +269,10 @@ BoxCollider:
 --- !u!4 &7885451737775891337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 557490a6fbfe06f4ca0d7320b4ec78fd, type: 3}
+  m_PrefabInstance: {fileID: 7702415329663845474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9017873653857097958 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 557490a6fbfe06f4ca0d7320b4ec78fd, type: 3}
   m_PrefabInstance: {fileID: 7702415329663845474}
   m_PrefabAsset: {fileID: 0}
