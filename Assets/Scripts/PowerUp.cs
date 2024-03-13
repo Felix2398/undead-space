@@ -6,13 +6,14 @@ public class PowerUp : MonoBehaviour
 {
     public PowerupEffect powerupEffect;
 
+    public AudioSource audioSource;
+
     public float lifetime = 15f; // Lebensdauer des Power-Ups in Sekunden
 
     GameObject player;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         Destroy(gameObject, lifetime);
     }
 
@@ -21,11 +22,20 @@ public class PowerUp : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collider) {
-        Debug.Log("Drinnen");
 
         if(collider.gameObject.tag == "Player") {
+            
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+
             powerupEffect.Apply(collider.gameObject);
-            Destroy(gameObject);
+            audioSource.Play();
+            StartCoroutine(DestroyAfterSound());
         }
+    }
+
+    IEnumerator DestroyAfterSound() {
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        Destroy(gameObject);
     }
 }
