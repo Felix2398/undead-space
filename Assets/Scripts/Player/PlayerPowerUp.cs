@@ -59,14 +59,13 @@ public class PlayerPowerUp : MonoBehaviour
     }
 
     public void ApplyDamageBuff(float amount, float time, Sprite img) {
-
-        // foreach (var weapon in startWeaponPrefabs)
-        // {
-        //     weapon.GetComponent<WeaponController>().IncreaseDamage(amount, time);
-        // }
         GameObject currentWeapon = gameObject.GetComponent<PlayerWeaponController>().getCurrentWeapon();
         WeaponController wc = currentWeapon.GetComponent<WeaponController>();
         if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
         wc.IncreaseDamage(amount, time);        
+    }
+
+    public void ApplyNewWeapon(GameObject weapon) {
+        gameObject.GetComponent<PlayerWeaponController>().AddNewWeapon(weapon);
     }
 }
