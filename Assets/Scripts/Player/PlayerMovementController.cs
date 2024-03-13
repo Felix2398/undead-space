@@ -33,6 +33,12 @@ public class PlayerMovementController : MonoBehaviour, PlayerStateListener
 
     [SerializeField] private bool lookAtMouse;
 
+    public bool LookAtMouse
+    {
+        get { return lookAtMouse; }
+        set { lookAtMouse = value; }
+    }
+
     CharacterController characterController;
 
     private void Awake() 
