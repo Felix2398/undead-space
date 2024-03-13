@@ -45,7 +45,7 @@ public class WeaponController : MonoBehaviour
         this.firingPoint = firingPoint;
     }
 
-    public void Fire()
+    public void Fire(float damageMultiplier)
     {
         if (shootingTimer < shootingCooldown) return;
         shootingTimer = 0f;
@@ -54,7 +54,7 @@ public class WeaponController : MonoBehaviour
 
         for (int i = 0; i < projectilesPerShot; i++)
         {
-            ShootProjectile();
+            ShootProjectile(damageMultiplier);
         }
 
         if (!hasInfiniteAmmo)
@@ -64,14 +64,14 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void ShootProjectile()
+    public void ShootProjectile(float damageMultiplier)
     {
         GameObject projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
         projectileController.SetDirection(calcProjectileSpread());
         projectileController.SetSpeed(shotSpeed);
-        Debug.Log(damagePerShot);
-        projectileController.SetDamage(damagePerShot);
+        projectileController.SetDamage(damagePerShot * damageMultiplier);
+        Debug.Log(damagePerShot * damageMultiplier);
         projectileController.SetRange(range);
         projectileController.SetEnemyPenetrationCount(enemyPenetrationCount);
 
@@ -124,28 +124,6 @@ public class WeaponController : MonoBehaviour
     public void AddListener(WeaponListener weaponListener)
     {
         listeners.Add(weaponListener);
-    }
-
-    public void IncreaseDamage(float amount, float time) {
-
-        if(!isWeaponDamageInscreased) {
-            isWeaponDamageInscreased = true;
-            int initialDamagePerShot = damagePerShot;
-
-            double increasedDamage = damagePerShot + damagePerShot * amount;
-
-            damagePerShot = (int)increasedDamage;
-            Debug.Log(damagePerShot);
-            StartCoroutine(ResetDamageAfterTime(initialDamagePerShot, time));
-        }
-    }
-
-    private IEnumerator ResetDamageAfterTime(int initialDamagePerShot, float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        damagePerShot = (int)initialDamagePerShot;
-        isWeaponDamageInscreased = false;
     }
 
     public void SetCurrentAmmoToMaxAmmo()

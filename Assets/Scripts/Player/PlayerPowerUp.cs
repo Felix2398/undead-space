@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPowerUp : MonoBehaviour
 {
     private bool isSpeedBuffActive = false;
+    private bool isDamageIncreased = false;
 
     private PlayerMovementController playerMovementController;
     private PlayerStateController playerStateController;
@@ -59,10 +60,23 @@ public class PlayerPowerUp : MonoBehaviour
     }
 
     public void ApplyDamageBuff(float amount, float time, Sprite img) {
-        GameObject currentWeapon = gameObject.GetComponent<PlayerWeaponController>().getCurrentWeapon();
-        WeaponController wc = currentWeapon.GetComponent<WeaponController>();
-        if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
-        wc.IncreaseDamage(amount, time);        
+
+        PlayerWeaponController weaponController = gameObject.GetComponent<PlayerWeaponController>();
+
+        if(!isDamageIncreased) {
+            isDamageIncreased = true;
+            powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
+            float defaultDamageMultiplier = weaponController.damageMultiplier;
+            weaponController.damageMultiplier = amount;
+            StartCoroutine(ResetDamageAfterTime(defaultDamageMultiplier, time, weaponController));
+        }
+    }
+
+    private IEnumerator ResetDamageAfterTime(float defaultDamageMultiplier, float time, PlayerWeaponController wc)
+    {
+        yield return new WaitForSeconds(time);
+        isDamageIncreased = false;
+        wc.damageMultiplier = defaultDamageMultiplier;
     }
 
     public void ApplyNewWeapon(GameObject weapon) {
