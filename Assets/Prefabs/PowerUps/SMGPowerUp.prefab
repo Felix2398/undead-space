@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupEffect: {fileID: 11400000, guid: 68b06ee1dc44504458c6569d049650a8, type: 2}
   audioSource: {fileID: 6330465842661631256}
+  meshRenderer: {fileID: 7042721669091782099}
   lifetime: 30
 --- !u!114 &9147102053772188808
 MonoBehaviour:
@@ -315,6 +316,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db90c0eba80ac444daae06949f16d65d, type: 3}
+--- !u!23 &7042721669091782099 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: db90c0eba80ac444daae06949f16d65d, type: 3}
+  m_PrefabInstance: {fileID: 8538072460733182295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8212290658534594236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db90c0eba80ac444daae06949f16d65d, type: 3}

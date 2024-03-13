@@ -8,6 +8,8 @@ public class PowerUp : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public MeshRenderer meshRenderer;
+
     public float lifetime = 15f; // Lebensdauer des Power-Ups in Sekunden
 
     GameObject player;
@@ -25,7 +27,7 @@ public class PowerUp : MonoBehaviour
 
         if(collider.gameObject.tag == "Player") {
             
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            meshRenderer.enabled = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
             powerupEffect.Apply(collider.gameObject);
