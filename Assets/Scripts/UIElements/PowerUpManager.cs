@@ -16,6 +16,5 @@ public class PowerUpManager : MonoBehaviour
         panelInstance.GetComponent<PowerUpPanel>().SetPanelImage(img);
         panelInstance.GetComponent<PowerUpPanel>().lifetime = time;
         panelInstance.GetComponent<PowerUpPanel>().SetActive(true);
-        // Optional: Konfiguriere das Panel hier (z.B. setze spezifische Daten)
     }
 }

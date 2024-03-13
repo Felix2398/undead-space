@@ -5,11 +5,15 @@ public class TimeCalculator : MonoBehaviour
 {
     public TextMeshProUGUI zeitAnzeige;
     private float vergangeneZeit = 0f;
+    private bool zeitLaeuft = true; // Variable zum Steuern des Zeitablaufs
 
     void Update()
     {
-        vergangeneZeit += Time.deltaTime;
-        ZeitAktualisieren();
+        if (zeitLaeuft)
+        {
+            vergangeneZeit += Time.deltaTime;
+            ZeitAktualisieren();
+        }
     }
 
     void ZeitAktualisieren()
@@ -19,5 +23,10 @@ public class TimeCalculator : MonoBehaviour
         int sekunden = (int)(vergangeneZeit % 60f);
 
         zeitAnzeige.text = string.Format(" {0:D2}:{1:D2}:{2:D2}", stunden, minuten, sekunden);
+    }
+
+    public void StopTime()
+    {
+        zeitLaeuft = false;
     }
 }
