@@ -13,6 +13,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] private int damagePerShot;
+    [SerializeField] private int enemyPenetrationCount;
     [SerializeField] private int projectilesPerShot;
     [SerializeField] private int shotSpeed;
     [SerializeField] private float range;
@@ -72,6 +73,7 @@ public class WeaponController : MonoBehaviour
         Debug.Log(damagePerShot);
         projectileController.SetDamage(damagePerShot);
         projectileController.SetRange(range);
+        projectileController.SetEnemyPenetrationCount(enemyPenetrationCount);
 
     }
 

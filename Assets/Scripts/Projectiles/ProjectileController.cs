@@ -10,6 +10,7 @@ public class ProjectileController : MonoBehaviour
     private Vector3 direction;
     private float damage;
     private float range;
+    private int enemyPenetrationCount;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,11 @@ public class ProjectileController : MonoBehaviour
         this.range = range;
     }
 
+    public void SetEnemyPenetrationCount(int enemyPenetrationCount)
+    {
+        this.enemyPenetrationCount = enemyPenetrationCount;
+    }
+
     private void OnCollisionEnter(Collision other) 
     {
         ContactPoint contact = other.contacts[0];
@@ -55,7 +61,11 @@ public class ProjectileController : MonoBehaviour
         else if (other.gameObject.CompareTag("Enemy Hurtbox"))
         {
             other.gameObject.GetComponent<EnemyHurtBox>().DealDamage(damage);
-            Destroy(gameObject);
+            enemyPenetrationCount--;
+            if (enemyPenetrationCount <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     } 
 }
