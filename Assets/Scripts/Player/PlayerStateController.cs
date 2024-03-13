@@ -36,6 +36,19 @@ public class PlayerStateController : MonoBehaviour
         ChangeState(PlayerState.IS_RUNNING);
     }
 
+    public void SetDancingState()
+    {
+        ShowWeapon(false);
+        ChangeState(PlayerState.IS_DANCING);
+    }
+
+    public void SetDyingState()
+    {
+        ShowWeapon(false);
+        ChangeState(PlayerState.IS_DYING);
+    }
+
+
     public void ChangeState(PlayerState newState)
     {
         if (currentState == newState)

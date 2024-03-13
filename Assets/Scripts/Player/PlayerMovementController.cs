@@ -82,8 +82,14 @@ public class PlayerMovementController : MonoBehaviour, PlayerStateListener
         lookAtMouse = newState switch
         {
             PlayerState.IS_SPRINTING => false,
+            PlayerState.IS_DANCING => false,
             _ => true
         };
+
+        if (newState == PlayerState.IS_DANCING)
+        {
+            transform.LookAt(new Vector3(0,0,-1));
+        }
     }
 
     private void HandleLookAtMouse()

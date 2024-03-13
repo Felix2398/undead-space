@@ -18,6 +18,8 @@ public class PlayerAnimationController : MonoBehaviour, PlayerStateListener
         animator.SetBool("isIdle", false);
         animator.SetBool("isRunning", false);
         animator.SetBool("isSprinting", false);
+        animator.SetBool("isDancing", false);
+        animator.SetBool("isDying", false);
     }
 
     public void onPlayerStateChange(PlayerState newState)
@@ -34,6 +36,13 @@ public class PlayerAnimationController : MonoBehaviour, PlayerStateListener
             case PlayerState.IS_SPRINTING:
                 animator.SetBool("isSprinting", true);
                 break;
+            case PlayerState.IS_DANCING:
+                animator.SetBool("isDancing", true);
+                break;
+            case PlayerState.IS_DYING:
+                animator.SetBool("isDancing", true);
+                break;
+
         }
     }
 }

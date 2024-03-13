@@ -37,7 +37,7 @@ public class PlayerInputController : MonoBehaviour
         {
             playerStateController.SetRunningState();
         }
-        else
+        else if (playerStateController.GetCurrentState() != PlayerState.IS_DANCING)
         {
             playerStateController.SetIdleState();
         }
@@ -56,5 +56,12 @@ public class PlayerInputController : MonoBehaviour
         {
             playerWeaponController.EquipNextWeapon();
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            playerStateController.SetDancingState();
+        }
+
+
     }
 }

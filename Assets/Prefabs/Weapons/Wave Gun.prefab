@@ -4959,7 +4959,7 @@ MonoBehaviour:
   range: 10
   horizontalSpread: 100
   verticalSpread: 0
-  shootingCooldown: 2
+  shootingCooldown: 0.3
   hasInfiniteAmmo: 0
   maxAmmoCount: 9
   startAmmoCount: 3
