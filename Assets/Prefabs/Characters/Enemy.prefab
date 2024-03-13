@@ -516,7 +516,7 @@ MonoBehaviour:
   ui: {fileID: 5330966249976006363}
   damage: 5
   speed: 2
-  attackRadius: 0.5
+  attackRadius: 0.3
   currentState: 0
   runAnimationSpeed: 1
   attackAnimationSpeed: 1
