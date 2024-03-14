@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputController : MonoBehaviour
+public class PlayerInputController : MonoBehaviour, PlayerStateListener
 {
     private PlayerStateController playerStateController;
     private PlayerWeaponController playerWeaponController;
     private PlayerMovementController playerMovementController;
+    private bool isDead = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() 
     {
         playerStateController = GetComponent<PlayerStateController>();
         playerWeaponController = GetComponent<PlayerWeaponController>();
         playerMovementController = GetComponent<PlayerMovementController>();
+        playerStateController.AddListener(this);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isDead) return;
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
@@ -47,6 +55,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void Update() 
     {
+        if (isDead) return;
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.E))
         {
             playerWeaponController.EquipPreviousWeapon();
@@ -61,7 +71,13 @@ public class PlayerInputController : MonoBehaviour
         {
             playerStateController.SetDancingState();
         }
+    }
 
-
+    public void onPlayerStateChange(PlayerState newState) 
+    {
+        if (newState == PlayerState.IS_DYING)
+        {
+            isDead = true;
+        }
     }
 }

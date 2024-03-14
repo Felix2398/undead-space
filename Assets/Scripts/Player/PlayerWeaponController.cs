@@ -131,8 +131,17 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
     public void AddNewWeapon(GameObject newWeaponPrefab)
     {
         WeaponType weaponType = newWeaponPrefab.GetComponent<WeaponController>().GetWeaponType();
-        if (WeaponTypeExists(weaponType)) return;
-        else InstantiateWeapon(newWeaponPrefab);
+        WeaponController weaponController = findWeaponOfType(weaponType);
+        if (weaponController == null)
+        {
+            InstantiateWeapon(newWeaponPrefab);
+            return;
+        }
+        else
+        {
+            int newAmmoCount = weaponController.GetCurrentAmmo() + weaponController.GetStartAmmo();
+            weaponController.ChangeAmmoCount(newAmmoCount);
+        }
     }
 
     private bool WeaponTypeExists(WeaponType weaponType)
@@ -149,5 +158,17 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
 
     public GameObject getCurrentWeapon() {
         return currentWeapon;
+    }
+
+    private WeaponController findWeaponOfType(WeaponType type)
+    {
+        foreach (GameObject weapon in currentWeapons)
+        {
+            if (weapon.GetComponent<WeaponController>().GetWeaponType() == type)
+            {
+                return weapon.GetComponent<WeaponController>();
+            }
+        }
+        return null;
     }
 }
