@@ -6,7 +6,6 @@ public class SkinPlayerApply : MonoBehaviour
     void Start()
     {
         Material skin = SkinManager.GetInstance().GetSkin();
-        Debug.Log(skin);
 
         // Wende das Material auf den Spieler an
         Material[] playerMaterials = playerRenderer.materials;
