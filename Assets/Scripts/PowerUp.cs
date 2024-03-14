@@ -9,6 +9,7 @@ public class PowerUp : MonoBehaviour
     public AudioSource audioSource;
 
     public MeshRenderer meshRenderer;
+    public Light pointLight;
 
     private float blinkStart = 3f;
 
@@ -34,6 +35,7 @@ public class PowerUp : MonoBehaviour
             {
                 // Toggle die Sichtbarkeit des MeshRenderers
                 meshRenderer.enabled = !meshRenderer.enabled;
+                pointLight.enabled = !pointLight.enabled;
 
                 // Warte einen kurzen Moment vor dem nächsten Blinken
                 yield return new WaitForSeconds(0.2f);
@@ -53,6 +55,7 @@ public class PowerUp : MonoBehaviour
             
             meshRenderer.enabled = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
+            pointLight.enabled = false;
 
             powerupEffect.Apply(collider.gameObject);
             audioSource.Play();
