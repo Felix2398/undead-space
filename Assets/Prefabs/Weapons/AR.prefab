@@ -5005,7 +5005,7 @@ MonoBehaviour:
   weaponType: 4
   weaponSprite: {fileID: 21300000, guid: 961e159a5961e884cb3cec0d551bea31, type: 3}
   muzzleFlash: {fileID: 8504351189194650190}
-  projectilePrefab: {fileID: 2946373576388238746, guid: a99310ab0b28dbf498133d68ce02fea8, type: 3}
+  projectilePrefab: {fileID: 2946373576388238746, guid: 552438133daf91f42b4bfa3fea8c6b20, type: 3}
   damagePerShot: 35
   enemyPenetrationCount: 2
   projectilesPerShot: 1
@@ -5339,7 +5339,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3066038, g: 1, b: 0.7902164, a: 1}
+      maxColor: {r: 0.30588233, g: 1, b: 0.5640595, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
