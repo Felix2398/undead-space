@@ -84,7 +84,7 @@ public class WeaponController : MonoBehaviour
         return direction;
     }
 
-    private void ChangeAmmoCount(int newAmmoCount)
+    public void ChangeAmmoCount(int newAmmoCount)
     {
         currentAmmoCount = Mathf.Min(newAmmoCount, maxAmmoCount);
         if (currentAmmoCount <= 0)
@@ -112,6 +112,11 @@ public class WeaponController : MonoBehaviour
     public int GetMaxAmmo()
     {
         return maxAmmoCount;
+    }
+
+    public int GetStartAmmo()
+    {
+        return startAmmoCount;
     }
 
     public WeaponType GetWeaponType()
