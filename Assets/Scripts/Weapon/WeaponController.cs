@@ -30,11 +30,19 @@ public class WeaponController : MonoBehaviour
         get { return isWeaponDamageInscreased; }
     }
 
+    [SerializeField] AudioClip shootSound;
+    private AudioSource audioSource;
+
 
     [SerializeField] private int maxAmmoCount;
     [SerializeField] private int startAmmoCount;
     [SerializeField] private int currentAmmoCount;
 
+    private void Start() 
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSound;
+    }
     private void FixedUpdate() 
     {
         shootingTimer += Time.deltaTime;
@@ -51,6 +59,7 @@ public class WeaponController : MonoBehaviour
         shootingTimer = 0f;
 
         muzzleFlash.Play();
+        audioSource.Play();
 
         for (int i = 0; i < projectilesPerShot; i++)
         {
