@@ -40,8 +40,8 @@ public class WaveSpawner : MonoBehaviour
 
     private bool levelUpItemSpawnedThisWave = false; 
 
-    public float defaultEnemyProbability = 0.7f; // 50% Wahrscheinlichkeit
-    public float hunterEnemyProbability = 0.2f; // 30% Wahrscheinlichkeit
+    private float defaultEnemyProbability = 0.70f;
+    private float hunterEnemyProbability = 0.25f; 
 
     public static WaveSpawner GetInstance() {
         return instance;
@@ -143,6 +143,7 @@ public class WaveSpawner : MonoBehaviour
         GameObject enemyPrefab;
 
         float roll = Random.value;
+
         if (roll < defaultEnemyProbability)
         {
             enemyPrefab = defaultEnemyPrefab;
@@ -153,18 +154,10 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
-            enemyPrefab = tankEnemyPrefab; // Angenommen, du hast eine Variable tankEnemyPrefab für das Tank-Enemy-Prefab
+            enemyPrefab = tankEnemyPrefab;
         }
 
         GameObject obj = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-        // var agent = obj.GetComponent<NavMeshAgent>();
-        // if (agent != null)
-        // {
-        //     // Du kannst unterschiedliche Geschwindigkeiten für verschiedene Feindtypen festlegen
-        //     float selectedSpeed = agent.gameObject == tankEnemyPrefab ? standardSpeed : 
-        //                           agent.gameObject == hunterEnemyPrefab ? fastSpeed : standardSpeed;
-        //     agent.speed = selectedSpeed;
-        // }
 
         enemiesAlive++;
         currentRoundTotalEnemyCount++;

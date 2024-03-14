@@ -30,17 +30,17 @@ public class PowerUp : MonoBehaviour
     IEnumerator Blink()
     {
         float endTime = Time.time + blinkStart;
-        while (Time.time < endTime)
-        {
-            // Toggle die Sichtbarkeit des MeshRenderers
-            meshRenderer.enabled = !meshRenderer.enabled;
+            while (Time.time < endTime)
+            {
+                // Toggle die Sichtbarkeit des MeshRenderers
+                meshRenderer.enabled = !meshRenderer.enabled;
 
-            // Warte einen kurzen Moment vor dem nächsten Blinken
-            yield return new WaitForSeconds(0.2f);
-        }
+                // Warte einen kurzen Moment vor dem nächsten Blinken
+                yield return new WaitForSeconds(0.2f);
+            }
 
-        // Stelle sicher, dass das Power-Up am Ende sichtbar ist
-        meshRenderer.enabled = true;
+            // Stelle sicher, dass das Power-Up am Ende sichtbar ist
+            meshRenderer.enabled = true;
     }
 
     void OnDestroy() {
@@ -57,6 +57,7 @@ public class PowerUp : MonoBehaviour
             powerupEffect.Apply(collider.gameObject);
             audioSource.Play();
             StartCoroutine(DestroyAfterSound());
+            StopAllCoroutines();
         }
     }
 
