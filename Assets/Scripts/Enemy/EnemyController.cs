@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float runAnimationSpeed;
     [SerializeField] private float attackAnimationSpeed;
+    [SerializeField] private float displayTimeAfterDead;
 
     void Start()
     {
@@ -109,7 +110,8 @@ public class EnemyController : MonoBehaviour
         agent.enabled = false;
         hitBox.gameObject.SetActive(false);
         hurtBox.gameObject.SetActive(false);
-        ui.gameObject.SetActive(false); 
+        ui.gameObject.SetActive(false);
+        Destroy(gameObject, displayTimeAfterDead);
     }
 
     public bool IsDead()
