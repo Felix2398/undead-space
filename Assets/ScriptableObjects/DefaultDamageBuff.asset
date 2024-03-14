@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b6d828bf373bb4188cfd1d3e04e30b, type: 3}
   m_Name: DefaultDamageBuff
   m_EditorClassIdentifier: 
-  amount: 0.5
+  amount: 1.5
   time: 5
   image: {fileID: 21300000, guid: ce257f8e92315ba438a837062e254f10, type: 3}

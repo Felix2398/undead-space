@@ -8,8 +8,9 @@ public class WaveSpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject player;
     
-    private int currentWave = 0;
+    private int currentWave = 4;
     public int enemiesAlive = 0;
+    public int currentRoundTotalEnemyCount = 0;
     private bool waitingForNextWave = false;
     
     public float spawnRadius = 10f;
@@ -19,18 +20,23 @@ public class WaveSpawner : MonoBehaviour
     public int enemiesPerBurst = 8; // Anzahl der Feinde pro Schub
     public float timeBetweenBursts = 4f; // Zeit in Sekunden zwischen den Schüben
 
+    private int totalEnemiesToSpawn;
+
+    private int deathsUntilLevelUp;
     public float standardSpeed = 0.8f;
     public float fastSpeed = 2f;
     // Wahrscheinlichkeit, dass ein Zombie schneller ist (z.B. 20%)
     public float fastZombieProbability = 0.2f;
 
     public GameObject[] powerUpPrefabs;
+    public GameObject levelUpItemPrefab; // Prefab für das Level-Up-Item
 
     public int maxAmountPowerUps = 2;
     public int powerUpsSpawned = 0;
 
     private int maxEnemiesAlive = 100;
-    
+
+    private bool levelUpItemSpawnedThisWave = false; 
     public static WaveSpawner GetInstance() {
         return instance;
     }
@@ -70,11 +76,12 @@ public class WaveSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         currentWave++;
-
+        currentRoundTotalEnemyCount = 0;
         GameManager.GetInstance().UpdateCurrentWaveLabel(currentWave);
 
         waitingForNextWave = false;
-        int totalEnemiesToSpawn = currentWave * 10;
+        totalEnemiesToSpawn = currentWave * 10;
+        deathsUntilLevelUp = Random.Range(1, totalEnemiesToSpawn);
         int bursts = Mathf.CeilToInt((float)totalEnemiesToSpawn / enemiesPerBurst);
         
         for (int i = 0; i < bursts; i++)
@@ -84,15 +91,6 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenBursts);
         }
     }
-    
-    // IEnumerator SpawnBurst(int enemies)
-    // {
-    //     for (int i = 0; i < enemies; i++)
-    //     {
-    //         SpawnEnemy();
-    //         yield return null; // Optional: Wartezeit zwischen dem Spawnen einzelner Feinde in einem Schub
-    //     }
-    // }
 
     IEnumerator SpawnBurst(int enemies)
     {
@@ -127,16 +125,21 @@ public class WaveSpawner : MonoBehaviour
             }
 
             enemiesAlive++;
+            currentRoundTotalEnemyCount++;
         }
     }
     
-    public void OnEnemyDeath(Vector3 deathPosition)
+  public void OnEnemyDeath(Vector3 deathPosition)
     {
         enemiesAlive--;
-
         CheckIfAllEnemiesDeath();
 
-        if (Random.Range(1, 101) <= 90 && powerUpsSpawned <= maxAmountPowerUps)
+        if (!levelUpItemSpawnedThisWave && currentWave % 5 == 0 && currentRoundTotalEnemyCount >= deathsUntilLevelUp) // Spawn Level-Up-Item alle 5 Runden
+        {
+            levelUpItemSpawnedThisWave = true; // Verhindert mehrfaches Spawnen in derselben Welle
+            SpawnLevelUpItem(deathPosition);
+        }
+        else if (Random.Range(1, 101) <= 90 && powerUpsSpawned <= maxAmountPowerUps)
         {
             SpawnPowerUp(deathPosition);
         }
@@ -175,6 +178,10 @@ public class WaveSpawner : MonoBehaviour
                 spawnPosition.y = 0.2f;
         Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity);
         powerUpsSpawned++;
+    }
+
+    void SpawnLevelUpItem(Vector3 deathPosition) {
+        Instantiate(levelUpItemPrefab, deathPosition, Quaternion.identity);
     }
 
     public void OnPowerUp() {

@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPowerUp : MonoBehaviour
 {
     private bool isSpeedBuffActive = false;
+    private bool isDamageIncreased = false;
 
     private PlayerMovementController playerMovementController;
     private PlayerStateController playerStateController;
     public GameObject powerupUIManager;
 
+    public TextMeshProUGUI levelLabel;
+    public Image levelUpBackground;
+
+    private int playerLevel = 1;
+
     void Start() 
     {
         playerMovementController = gameObject.GetComponent<PlayerMovementController>(); 
         playerStateController = gameObject.GetComponent<PlayerStateController>(); 
+        levelLabel.text = playerLevel.ToString();
     }
 
     public void ApplyHealthBuff(float amount)
@@ -59,13 +68,35 @@ public class PlayerPowerUp : MonoBehaviour
     }
 
     public void ApplyDamageBuff(float amount, float time, Sprite img) {
-        GameObject currentWeapon = gameObject.GetComponent<PlayerWeaponController>().getCurrentWeapon();
-        WeaponController wc = currentWeapon.GetComponent<WeaponController>();
-        if(!wc.IsWeaponDamageInscreased) powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
-        wc.IncreaseDamage(amount, time);        
+
+        PlayerWeaponController weaponController = gameObject.GetComponent<PlayerWeaponController>();
+
+        if(!isDamageIncreased) {
+            isDamageIncreased = true;
+            powerupUIManager.GetComponent<PowerUpManager>().AddPowerUpPanel(img, time);
+            float defaultDamageMultiplier = weaponController.damageMultiplier;
+            weaponController.damageMultiplier = weaponController.damageMultiplier * amount;
+            StartCoroutine(ResetDamageAfterTime(defaultDamageMultiplier, time, weaponController));
+        }
+    }
+
+    private IEnumerator ResetDamageAfterTime(float defaultDamageMultiplier, float time, PlayerWeaponController wc)
+    {
+        yield return new WaitForSeconds(time);
+        isDamageIncreased = false;
+        wc.damageMultiplier = defaultDamageMultiplier;
     }
 
     public void ApplyNewWeapon(GameObject weapon) {
         gameObject.GetComponent<PlayerWeaponController>().AddNewWeapon(weapon);
+    }
+
+    public void ApplyLevelUpBuff(float amount) {
+
+        PlayerWeaponController weaponController = gameObject.GetComponent<PlayerWeaponController>();
+        weaponController.damageMultiplier += amount;
+        playerLevel++;
+        levelLabel.text = playerLevel.ToString();
+        levelUpBackground.GetComponent<LevelUpAnimator>().StartLevelUpAnimation();
     }
 }

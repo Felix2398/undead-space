@@ -7,12 +7,17 @@ using TMPro; // Importieren des TextMeshPro-Namespace
 
 public class GameManager : MonoBehaviour
 {
-
     public TextMeshProUGUI currentWaveLabel;
 
     public TextMeshProUGUI nextWaveWarningText;
 
     public TextMeshProUGUI highScoreLabel;
+    public TextMeshProUGUI timeLabel;
+
+    public TextMeshProUGUI TimeLabel
+    {
+        get { return timeLabel; }
+    }
 
     private int currentHighScore = 0;
 
@@ -59,12 +64,24 @@ public class GameManager : MonoBehaviour
     }
 
     public void DisplayNextWaveWarning() {
-        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Nächste Welle kommt");
+        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Nächste Welle kommt!");
     }
 
     public void IncrementHighscore(int points) {
 
         currentHighScore += points;
         highScoreLabel.text = currentHighScore.ToString("D6");
+    }
+
+    public void hideHighscore() {
+        highScoreLabel.enabled = false;
+    }
+
+    public void hideTimer() {
+        timeLabel.enabled = false;
+    }
+
+    public void hideWaveLabel() {
+        currentWaveLabel.enabled = false;
     }
 }

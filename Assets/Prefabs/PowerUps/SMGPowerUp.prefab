@@ -52,7 +52,8 @@ MonoBehaviour:
   powerupEffect: {fileID: 11400000, guid: 68b06ee1dc44504458c6569d049650a8, type: 2}
   audioSource: {fileID: 6330465842661631256}
   meshRenderer: {fileID: 7042721669091782099}
-  lifetime: 30
+  blinkStart: 3
+  lifetime: 15
 --- !u!114 &9147102053772188808
 MonoBehaviour:
   m_ObjectHideFlags: 0

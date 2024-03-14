@@ -17,6 +17,7 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
     
     private int weaponIndex;
     private bool weaponIsEnabled;
+    public float damageMultiplier = 1f;
 
     private void Awake() 
     {
@@ -80,7 +81,7 @@ public class PlayerWeaponController : MonoBehaviour, PlayerStateListener, Weapon
     public void FireCurrentWeapon()
     {
         if (!weaponIsEnabled) return;
-        currentWeapon.GetComponent<WeaponController>().Fire();
+        currentWeapon.GetComponent<WeaponController>().Fire(damageMultiplier);
     }
 
     public void OnWeaponStatusChange(bool isEnabled)
