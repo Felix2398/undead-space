@@ -513,7 +513,7 @@ MonoBehaviour:
   hitBox: {fileID: 6080558104308724843}
   hurtBox: {fileID: 5363144789779277480}
   ui: {fileID: 5330966249976006363}
-  damage: 10
+  damage: 4
   speed: 2.7
   attackRadius: 0.5
   currentState: 0
