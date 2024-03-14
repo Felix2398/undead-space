@@ -88,7 +88,7 @@ public class PlayerMovementController : MonoBehaviour, PlayerStateListener
 
         if (newState == PlayerState.IS_DANCING)
         {
-            transform.LookAt(new Vector3(0,0,-1));
+            transform.LookAt(new Vector3(0,0, -1000));
         }
     }
 
