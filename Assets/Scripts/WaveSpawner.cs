@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject tankEnemyPrefab;
     public GameObject player;
     
-    private int currentWave = 4;
+    private int currentWave = 0;
     public int enemiesAlive = 0;
     public int currentRoundTotalEnemyCount = 0;
     private bool waitingForNextWave = false;
@@ -40,8 +40,8 @@ public class WaveSpawner : MonoBehaviour
 
     private bool levelUpItemSpawnedThisWave = false; 
 
-    public float defaultEnemyProbability = 0.5f; // 50% Wahrscheinlichkeit
-    public float hunterEnemyProbability = 0.3f; // 30% Wahrscheinlichkeit
+    public float defaultEnemyProbability = 0.7f; // 50% Wahrscheinlichkeit
+    public float hunterEnemyProbability = 0.2f; // 30% Wahrscheinlichkeit
 
     public static WaveSpawner GetInstance() {
         return instance;
