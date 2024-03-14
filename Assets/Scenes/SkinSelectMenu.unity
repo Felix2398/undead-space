@@ -2970,8 +2970,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  names: []
   skinPositions: []
   cameraMoveSpeed: 5
+  nameTextBox: {fileID: 0}
 --- !u!1001 &1038673415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3063,9 +3065,9 @@ RectTransform:
   - {fileID: 827620674}
   m_Father: {fileID: 1286808401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9, y: -177.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -1.9, y: 32}
   m_SizeDelta: {x: 180, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058490153
@@ -3157,7 +3159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1bc918efc9ffcbd42a707dbe4ffc36b5, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4618,14 +4620,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skins:
-  - {fileID: 2100000, guid: 37b7c6775ba9a416bbc22b3290f31642, type: 2}
+  - {fileID: 2100000, guid: e1197ffeb1162a04abfa802c9b3ae863, type: 2}
   - {fileID: 2100000, guid: 8f6e48dce548a40edbd2f1580083fb06, type: 2}
   - {fileID: 2100000, guid: efb50fe20f8d44896aca787408cfdad4, type: 2}
+  names:
+  - RANDY
+  - MAFIA BOSS
+  - CYBORG
   skinPositions:
   - {fileID: 792287175}
   - {fileID: 1947972808}
   - {fileID: 1536072947}
   cameraMoveSpeed: 5
+  nameTextBox: {fileID: 1594121252}
 --- !u!1 &1594121250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,7 +4645,7 @@ GameObject:
   - component: {fileID: 1594121253}
   - component: {fileID: 1594121252}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name Textbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4658,10 +4665,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1286808401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 190}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -5, y: -35}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594121252
 MonoBehaviour:
