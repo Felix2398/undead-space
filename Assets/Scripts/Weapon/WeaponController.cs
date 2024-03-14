@@ -71,7 +71,6 @@ public class WeaponController : MonoBehaviour
         projectileController.SetDirection(calcProjectileSpread());
         projectileController.SetSpeed(shotSpeed);
         projectileController.SetDamage(damagePerShot * damageMultiplier);
-        Debug.Log(damagePerShot * damageMultiplier);
         projectileController.SetRange(range);
         projectileController.SetEnemyPenetrationCount(enemyPenetrationCount);
 

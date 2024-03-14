@@ -8,14 +8,16 @@ public class PlayerHealth : Health {
     public static bool GameIsPaused = false;
     public GameObject GameOverMenuUI;
     public GameObject GameWaveUI;
+    [SerializeField] ParticleSystem hitEffect;
     
     public void ApplyDamage(float damage)
     {
         SubtractLife(damage);
-
+        hitEffect.Play();
 
         if (health <= 0)
         {
+            GetComponent<PlayerStateController>().SetDyingState();
             GameOverMenuUI.SetActive(true);
             GameIsPaused = true;
             GameOver.GetInstance().onPlayerDeath();
