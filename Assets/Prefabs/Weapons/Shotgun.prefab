@@ -9916,7 +9916,7 @@ MonoBehaviour:
   shootingCooldown: 0.5
   hasInfiniteAmmo: 0
   shootSound: {fileID: 8300000, guid: 2c1c237c0dc67e445b149e254ebf3395, type: 3}
-  maxAmmoCount: 30
+  maxAmmoCount: 40
   startAmmoCount: 20
   currentAmmoCount: 0
 --- !u!82 &-4828655282912745840

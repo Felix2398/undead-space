@@ -9917,7 +9917,7 @@ MonoBehaviour:
   hasInfiniteAmmo: 0
   shootSound: {fileID: 8300000, guid: 817e44828e3d19c41ab820a97c0f9e88, type: 3}
   maxAmmoCount: 20
-  startAmmoCount: 10
+  startAmmoCount: 20
   currentAmmoCount: 0
 --- !u!82 &7376080207754698028
 AudioSource:

@@ -5006,17 +5006,17 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: 961e159a5961e884cb3cec0d551bea31, type: 3}
   muzzleFlash: {fileID: 8504351189194650190}
   projectilePrefab: {fileID: 2946373576388238746, guid: 552438133daf91f42b4bfa3fea8c6b20, type: 3}
-  damagePerShot: 35
+  damagePerShot: 40
   enemyPenetrationCount: 2
   projectilesPerShot: 1
-  shotSpeed: 5
+  shotSpeed: 7
   range: 1
   horizontalSpread: 2
   verticalSpread: 3
   shootingCooldown: 0.2
   hasInfiniteAmmo: 0
   shootSound: {fileID: 8300000, guid: 7473cef0d819819498638abc0123971e, type: 3}
-  maxAmmoCount: 200
+  maxAmmoCount: 400
   startAmmoCount: 100
   currentAmmoCount: 0
 --- !u!82 &3775347985606890496
