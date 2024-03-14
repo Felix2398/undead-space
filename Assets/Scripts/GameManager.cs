@@ -57,14 +57,14 @@ public class GameManager : MonoBehaviour
 
         if(waveNum == 1) {
            currentWaveLabel.gameObject.SetActive(true);
-           currentWaveLabel.GetComponent<TextFadeIn>().FadeInText("Welle " + waveNum.ToString());
+           currentWaveLabel.GetComponent<TextFadeIn>().FadeInText("Wave " + waveNum.ToString());
         }
 
-        currentWaveLabel.text = "Welle " + waveNum.ToString();
+        currentWaveLabel.text = "Wave " + waveNum.ToString();
     }
 
     public void DisplayNextWaveWarning() {
-        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Nächste Welle kommt!");
+        nextWaveWarningText.GetComponent<TextFadeInOut>().DisplayText("Next Wave is coming!");
     }
 
     public void IncrementHighscore(int points) {
