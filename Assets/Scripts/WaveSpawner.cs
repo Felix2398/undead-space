@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject defaultEnemyPrefab;
+    public GameObject hunterEnemyPrefab;
+    public GameObject tankEnemyPrefab;
     public GameObject player;
     
     private int currentWave = 4;
@@ -37,6 +39,10 @@ public class WaveSpawner : MonoBehaviour
     private int maxEnemiesAlive = 100;
 
     private bool levelUpItemSpawnedThisWave = false; 
+
+    public float defaultEnemyProbability = 0.5f; // 50% Wahrscheinlichkeit
+    public float hunterEnemyProbability = 0.3f; // 30% Wahrscheinlichkeit
+
     public static WaveSpawner GetInstance() {
         return instance;
     }
@@ -110,24 +116,60 @@ public class WaveSpawner : MonoBehaviour
         }
     }
     
+    // void SpawnEnemy()
+    // {
+    //     Vector3 spawnPoint = RandomPointAroundPlayer(spawnRadius);
+    //     if (spawnPoint != Vector3.zero)
+    //     {
+    //         GameObject obj = Instantiate(defaultEnemyPrefab, spawnPoint, Quaternion.identity);
+
+    //         var agent = obj.GetComponent<NavMeshAgent>();
+    //         if (agent != null)
+    //         {
+    //             float selectedSpeed = (Random.value < fastZombieProbability) ? fastSpeed : standardSpeed;
+    //             agent.speed = selectedSpeed;
+    //         }
+
+    //         enemiesAlive++;
+    //         currentRoundTotalEnemyCount++;
+    //     }
+    // }
+
     void SpawnEnemy()
+{
+    Vector3 spawnPoint = RandomPointAroundPlayer(spawnRadius);
+    if (spawnPoint != Vector3.zero)
     {
-        Vector3 spawnPoint = RandomPointAroundPlayer(spawnRadius);
-        if (spawnPoint != Vector3.zero)
+        GameObject enemyPrefab;
+
+        float roll = Random.value;
+        if (roll < defaultEnemyProbability)
         {
-            GameObject obj = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-
-            var agent = obj.GetComponent<NavMeshAgent>();
-            if (agent != null)
-            {
-                float selectedSpeed = (Random.value < fastZombieProbability) ? fastSpeed : standardSpeed;
-                agent.speed = selectedSpeed;
-            }
-
-            enemiesAlive++;
-            currentRoundTotalEnemyCount++;
+            enemyPrefab = defaultEnemyPrefab;
         }
+        else if (roll < defaultEnemyProbability + hunterEnemyProbability)
+        {
+            enemyPrefab = hunterEnemyPrefab;
+        }
+        else
+        {
+            enemyPrefab = tankEnemyPrefab; // Angenommen, du hast eine Variable tankEnemyPrefab für das Tank-Enemy-Prefab
+        }
+
+        GameObject obj = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        // var agent = obj.GetComponent<NavMeshAgent>();
+        // if (agent != null)
+        // {
+        //     // Du kannst unterschiedliche Geschwindigkeiten für verschiedene Feindtypen festlegen
+        //     float selectedSpeed = agent.gameObject == tankEnemyPrefab ? standardSpeed : 
+        //                           agent.gameObject == hunterEnemyPrefab ? fastSpeed : standardSpeed;
+        //     agent.speed = selectedSpeed;
+        // }
+
+        enemiesAlive++;
+        currentRoundTotalEnemyCount++;
     }
+}
     
   public void OnEnemyDeath(Vector3 deathPosition)
     {
