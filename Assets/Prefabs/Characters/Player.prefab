@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f06c0d369273a44b8d3d3c22d350ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupUIManager: {fileID: 0}
+  powerupUIManager: {fileID: 2532703064759127473, guid: 74b8e76dde5b91b40b096f864716f283, type: 3}
   levelLabel: {fileID: 7015435304437052000}
   levelUpBackground: {fileID: 6532699897848033267}
 --- !u!114 &3421776699536668717
